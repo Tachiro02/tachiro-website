@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   id="Capa_1"
+   data-name="Capa 1"
+   viewBox="0 0 24 21.695"
+   version="1.1"
+   width="24"
+   height="21.695"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1">
+    <linearGradient
+       id="linearGradient1">
+      <stop
+         style="stop-color:#f1460a;stop-opacity:1;"
+         offset="0"
+         id="stop1" />
+      <stop
+         style="stop-color:#ee8a08;stop-opacity:1;"
+         offset="1"
+         id="stop2" />
+    </linearGradient>
+    <linearGradient
+       xlink:href="#linearGradient1"
+       id="linearGradient2"
+       x1="12"
+       y1="0.00049972534"
+       x2="12"
+       y2="24.0005"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(0,-1.153)" />
+  </defs>
+  <path
+     d="m 18.9,1.6218838e-8 h 3.682 L 14.54,9.189 24,21.695 H 16.595 L 10.791,14.112 4.157,21.695 H 0.469 L 9.069,11.864 0,1.6218838e-8 H 7.593 L 12.834,6.931 18.899,1.6218838e-8 Z M 17.607,19.494 h 2.039 L 6.482,2.086 h -2.19 l 13.314,17.408 z"
+     id="path1"
+     style="fill:url(#linearGradient2)" />
+</svg>
