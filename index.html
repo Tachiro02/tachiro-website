@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tachiro | Home</title>
+    <link rel="icon" type="image/png" href="assets/logo.png" />
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  
+  <body>
+    <!-- ========== HERO ========== -->
+    <section class="hero">
+        <div class="hero-grid">
+            <!-- left -->
+            <div class="hero-left">
+              <a class="img-logo" href="index.html">
+                <img class="hero-logo" src="assets/logo.svg" alt="Logo" width="100" height="100" />
+              </a>
+
+                <h1 class="hero-title">
+                    <span class="t-grad-violet">Digital and 3D artist</span>
+                    <span class="t-muted"> specialized in the  </span>
+                    <span class="t-grad-orange">Minecraft universe. </span>
+                    <span class="t-muted"> I create</span>
+                    <span class="t-muted2">concept art, animations, and both stylized and realistic</span>
+                    <span class="t-muted2">renders for creators and brands.</span>
+                </h1>
+            </div>
+
+            <!-- vertical line -->
+              <div class="hero-vline" aria-hidden="true">
+
+              </div>
+
+            <!-- right -->
+            <aside class="hero-right">
+                <a class="hero-about" href="about.html">About Me</a>
+                <a class="hero-work" href="marketing.html">MY WORK</a>
+            </aside>
+        </div>
+
+        <div class="divider-x" aria-hidden="true"></div>
+    </section>
+
+    <!-- ===== CATEGORY STRIP ===== -->
+    <section class="cat-strip">
+      <div class="cat-row">
+
+        <article class="cat">
+          <h3 class="cat__label">Marketing Renders</h3>
+          <a class="cat__thumb" href="marketing.html">
+            <img src="assets/img/MarketingRenders.webp" alt="Marketing Renders">
+          </a>
+        </article>
+
+        <article class="cat">
+          <h3 class="cat__label">Concept Art</h3>
+          <a class="cat__thumb" href="concept.html">
+            <img src="assets/img/ConceptArt.webp" alt="Concept Art">
+          </a>
+        </article>
+
+        <article class="cat">
+          <h3 class="cat__label">Animations</h3>
+          <a class="cat__thumb" href="animations.html">
+            <img src="assets/img/Animations.webp" alt="Animations">
+          </a>
+        </article>
+
+        <article class="cat">
+          <h3 class="cat__label">Key Art</h3>
+          <a class="cat__thumb" href="keyart.html">
+            <img src="assets/img/KayArt.webp" alt="Key Art">
+          </a>
+        </article>
+
+        <article class="cat">
+          <h3 class="cat__label">Squared Studio</h3>
+          <a class="cat__thumb" href="collabs.html">
+            <img src="assets/img/Collaborations.webp" alt="Collaborations">
+          </a>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ===== CTA ===== -->
+    <section class="cta">
+      <div class="cta__inner">
+        <h2 class="cta__title">
+          <span class="cta-grad_violeta">Let's work</span>
+          <span class="cta-grad_orange">together<span class="cta-grad_violeta2">!</span></span>
+        </h2>
+      </div>
+      <div class="divider-x" aria-hidden="true"></div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="site-footer">
+      <div class="footer-grid">
+        <!-- Left -->
+        <div class="footer-left">
+          <h3 class="footer-headingLeft footer-heading">SOCIALS</h3>
+
+          <nav class="socials">
+            <!-- X / Twitter -->
+            <a class="social" href="https://x.com/tachiro02" target="_blank" rel="noopener">
+              <img src="assets/icons/twitter-alt.svg" alt="X/Twitter">
+            </a>
+            <!-- Instagram -->
+            <a class="social" href="https://www.instagram.com/tachiro02/" target="_blank" rel="noopener">
+              <img src="assets/icons/instagram.svg" alt="Instagram">
+            </a>
+            <!-- Discord -->
+            <a class="social" href="https://discordapp.com/users/483805374525472788" target="_blank" rel="noopener">
+              <img src="assets/icons/discord.svg" alt="Discord">
+            </a>
+          </nav>
+        </div>
+
+        <!-- Vertical divider -->
+        <div class="footer-vline" aria-hidden="true"></div>
+
+        <!-- Right -->
+        <div class="footer-right">
+          <h3 class="footer-heading">CONTACT</h3>
+          <a class="footer-mail" href="mailto:nokichan03@gmail.com">nokichan03@gmail.com</a>
+        </div>
+      </div>
+    </footer>
+      <div class="footer-bottom">
+          <p>© 2026 Tachiro — Portfolio. All renders displayed are property of their respective companies and are shown here with permission for portfolio purposes only.</p>
+      </div>
+  </body>
+
+  <script>
+    document.addEventListener('contextmenu', (e) => e.preventDefault());
+  </script>
+
+    <script>
+      document.addEventListener('dragstart', (e) => {
+        if (e.target.closest('.gallery, .tile, #lightbox')) {
+          e.preventDefault();
+        }
+      });
+    </script>  
+
+</html>

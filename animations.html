@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tachiro | Animations</title>
+    <link rel="icon" type="image/png" href="assets/logo.png" />
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header class="hero-abo">
+        <div class="hero-abo_grid1">
+            <div>
+              <a class="img-logo" href="index.html">
+                <img src="assets/logo.svg" alt="Logo" width="100" height="100" />
+              </a>
+            </div>
+
+            <div class="hero-abo_type">
+                <a class="hero-abo_es2" href="about.html">About Me</a>
+            </div>
+        </div>
+    </header>
+
+  <!-- ===== About Grid ===== -->
+    <div class="divider-x" aria-hidden="true"></div>
+
+    <!-- ===== Header ===== -->
+    <header class="hero-abo">
+        <nav class="site-nav">
+            <a href="marketing.html" class="site-nav__link no-active">Marketing Renders</a>
+            <a href="concept.html" class="site-nav__link no-active">Concept Art</a>
+            <p class="site-nav__link is-active">Animations</p>
+            <a href="keyart.html" class="site-nav__link no-active">Key Art</a>
+            <a href="collabs.html" class="site-nav__link no-active">Squared Studio</a>
+        </nav>
+            <div class="divider-x" aria-hidden="true"></div>
+    </header>
+
+  <!-- ===== Gallery Masonry ===== -->
+  <main class="gallery">
+    <div class="masonry" aria-live="polite">
+
+      <a class="tile t-1x1"
+         aria-label="NaturalistCapibara - Starfish Studios"
+         style="background-image:url('assets/img/animations/ani-1-ca.webp')"
+         data-video="assets/img/animations/ani-1.mp4">
+        <span class="caption">Starfish Studios</span>
+      </a>
+
+      <a class="tile t-1x1"
+         aria-label="NaturalistHamsters - Starfish Studios"
+         style="background-image:url('assets/img/animations/ani-2-ca.webp')"
+         data-video="assets/img/animations/ani-2.mp4">
+        <span class="caption">Starfish Studios</span>
+      </a>
+
+      <a class="tile t-1x1"
+         aria-label="NaturalistVultures - Starfish Studios"
+         style="background-image:url('assets/img/animations/ani-3-ca.webp')"
+         data-video="assets/img/animations/ani-3.mp4">
+        <span class="caption">Starfish Studios</span>
+      </a>
+
+      <a class="tile t-9x16"
+         aria-label="MoanaMaui - Starfish Studios"
+         style="background-image:url('assets/img/animations/ani-4-ca.webp')"
+         data-video="assets/img/animations/ani-4.mp4">
+        <span class="caption">Starfish Studios</span>
+      </a>
+
+      <a class="tile t-3x4"
+         aria-label="Goggles1 - Starfish Studios"
+         style="background-image:url('assets/img/animations/ani-5-ca.webp')"
+         data-video="assets/img/animations/ani-5.mp4">
+        <span class="caption">Starfish Studios</span>
+      </a>
+
+      <a class="tile t-3x4"
+         aria-label="Goggles2 - Starfish Studios"
+         style="background-image:url('assets/img/animations/ani-6-ca.webp')"
+         data-video="assets/img/animations/ani-6.mp4">
+        <span class="caption">Starfish Studios</span>
+      </a>
+
+    </div>
+  </main>
+
+    <!-- ===== CTA ===== -->
+    <section class="cta">
+      <div class="cta__inner">
+        <h2 class="cta__title">
+          <span class="cta-grad_violeta">Let's work</span>
+          <span class="cta-grad_orange">together<span class="cta-grad_violeta2">!</span></span>
+        </h2>
+      </div>
+      <div class="divider-x" aria-hidden="true"></div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="site-footer">
+      <div class="footer-grid">
+        <!-- Left -->
+        <div class="footer-left">
+          <h3 class="footer-heading">SOCIALS</h3>
+
+          <nav class="socials">
+            <!-- X / Twitter -->
+            <a class="social" href="https://x.com/tachiro02" target="_blank" rel="noopener">
+              <img src="assets/icons/twitter-alt.svg" alt="X / Twitter">
+            </a>
+            <!-- Instagram -->
+            <a class="social" href="https://www.instagram.com/tachiro02/" target="_blank" rel="noopener">
+              <img src="assets/icons/instagram.svg" alt="Instagram">
+            </a>
+            <!-- Discord -->
+            <a class="social" href="https://discordapp.com/users/483805374525472788" target="_blank" rel="noopener">
+              <img src="assets/icons/discord.svg" alt="Discord">
+            </a>
+          </nav>
+        </div>
+
+        <!-- Divider vertical -->
+        <div class="footer-vline" aria-hidden="true"></div>
+
+        <!-- Right -->
+        <div class="footer-right">
+          <h3 class="footer-heading">CONTACT</h3>
+          <a class="footer-mail" href="mailto:nokichan03@gmail.com">nokichan03@gmail.com</a>
+        </div>
+      </div>
+    </footer>
+      <div class="footer-bottom">
+          <p>© 2026 Tachiro — Portfolio. All renders displayed are property of their respective companies and are shown here with permission for portfolio purposes only.</p>
+      </div>
+
+            <!-- Lightbox -->
+      <div id="lightbox" class="lightbox" aria-hidden="true">
+        <button class="lb-close" aria-label="Close">×</button>
+
+        <!-- Nav -->
+        <button class="lb-prev" aria-label="Previous">‹</button>
+        <button class="lb-next" aria-label="Next">›</button>
+
+        <img class="lightbox-img" src="" alt="">
+      </div>
+
+      <script>
+        document.addEventListener('DOMContentLoaded', () => {
+          const tiles    = Array.from(document.querySelectorAll('.tile'));
+          const lightbox = document.getElementById('lightbox');
+
+          // Construir lista de ítems (imagen o video) a partir de cada .tile
+          const items = tiles.map(tile => {
+            const alt = tile.getAttribute('aria-label') || '';
+            const videoSrc = tile.dataset.video;
+            if (videoSrc) return { type: 'video', src: videoSrc, alt };
+
+            // Extraer URL del background-image
+            let bg = tile.style.backgroundImage;
+            if (!bg || bg === 'none') bg = getComputedStyle(tile).backgroundImage;
+            const match = bg && bg.match(/^url\(["']?(.*?)["']?\)$/);
+            return { type: 'image', src: match ? match[1] : null, alt };
+          }).filter(it => !!it.src);
+
+          let current = -1;
+
+          // ----- helpers scroll -----
+          let savedScrollY = 0;
+          function lockScroll() {
+            savedScrollY = window.scrollY || 0;
+            document.body.style.position = 'fixed';
+            document.body.style.top = `-${savedScrollY}px`;
+            document.body.style.left = '0';
+            document.body.style.right = '0';
+            document.body.style.width = '100%';
+            document.body.classList.add('no-scroll'); // por si tienes estilos
+          }
+          function unlockScroll() {
+            const y = Math.abs(parseInt(document.body.style.top || '0', 10)) || 0;
+            document.body.style.position = '';
+            document.body.style.top = '';
+            document.body.style.left = '';
+            document.body.style.right = '';
+            document.body.style.width = '';
+            document.body.classList.remove('no-scroll');
+            window.scrollTo(0, y);
+          }
+
+          // Limpia TODO lo que haya dentro del lightbox y detiene media previa
+          function stopMedia() {
+            const vid = lightbox.querySelector('video.lightbox-video');
+            if (vid) {
+              try { vid.pause(); } catch(_) {}
+              const s = vid.querySelector('source');
+              if (s) s.removeAttribute('src');
+              vid.removeAttribute('src');
+              try { vid.load(); } catch(_) {}
+            }
+            // elimina cualquier contenido previo (incluida una X anterior)
+            lightbox.innerHTML = '';
+          }
+
+          // Renderiza imagen o video en el lightbox (1 sola X)
+          function render(index) {
+            if (index < 0 || index >= items.length) return;
+            current = index;
+            const item = items[current];
+
+            stopMedia();
+            lightbox.classList.add('is-open');
+            lightbox.setAttribute('aria-hidden', 'false');
+            lockScroll();
+
+            if (item.type === 'video') {
+              const video = document.createElement('video');
+              video.className = 'lightbox-video';
+              video.controls = true;
+              video.playsInline = true;                 // iOS
+              video.setAttribute('webkit-playsinline','');
+              video.preload = 'metadata';
+              video.disablePictureInPicture = true;
+              video.controlsList = 'nodownload noremoteplayback';
+              video.oncontextmenu = () => false;
+
+              const source = document.createElement('source');
+              source.src  = item.src;
+              source.type = 'video/mp4';               // clave para Safari
+              video.appendChild(source);
+
+              lightbox.appendChild(video);
+              // Reproduce tras el click que abrió (gesto del usuario)
+              video.play().catch(()=>{ /* el usuario puede tocar play */ });
+            } else {
+              const img = document.createElement('img');
+              img.className = 'lightbox-img';
+              img.src = item.src;
+              img.alt = item.alt || '';
+              img.draggable = false;
+              img.oncontextmenu = () => false;
+              lightbox.appendChild(img);
+            }
+
+            // Agregar UNA sola “X”
+            const btnClose = document.createElement('span');
+            btnClose.className = 'lb-close';
+            btnClose.setAttribute('aria-label','Cerrar');
+            btnClose.textContent = '×';
+            btnClose.addEventListener('click', closeLightbox);
+            lightbox.appendChild(btnClose);
+          }
+
+          function closeLightbox() {
+            stopMedia();
+            lightbox.classList.remove('is-open');
+            lightbox.setAttribute('aria-hidden', 'true');
+            unlockScroll();
+          }
+
+          function showNext() {
+            if (items.length < 2) return;
+            render((current + 1) % items.length);
+          }
+          function showPrev() {
+            if (items.length < 2) return;
+            render((current - 1 + items.length) % items.length);
+          }
+
+          // Abrir por click de tile
+          tiles.forEach((tile, i) => {
+            tile.addEventListener('click', (e) => {
+              e.preventDefault();
+              render(i);
+            });
+          });
+
+          // Cerrar si se hace click en el fondo negro (no sobre el media)
+          lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) closeLightbox();
+          });
+
+          // Teclado
+          document.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('is-open')) return;
+            if (e.key === 'Escape') closeLightbox();
+            else if (e.key === 'ArrowRight') showNext();
+            else if (e.key === 'ArrowLeft')  showPrev();
+          });
+
+          // Gestos táctiles (swipe) en el lightbox
+          let touchStartX = 0;
+          lightbox.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].clientX;
+          }, { passive: true });
+          lightbox.addEventListener('touchend', (e) => {
+            const dx = e.changedTouches[0].clientX - touchStartX;
+            if (Math.abs(dx) > 50) { dx < 0 ? showNext() : showPrev(); }
+          }, { passive: true });
+
+          // Anti-guardar básico
+          document.addEventListener('contextmenu', (e) => {
+            if (e.target.closest('.gallery, .tile, #lightbox')) e.preventDefault();
+          });
+          document.addEventListener('dragstart', (e) => {
+            if (e.target.closest('.gallery, .tile, #lightbox')) e.preventDefault();
+          });
+        });
+      </script>
+
+
+    <script>
+      document.addEventListener('contextmenu', (e) => e.preventDefault());
+    </script>
+
+  </body>
+</html>
+
