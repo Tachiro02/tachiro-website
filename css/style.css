@@ -1,0 +1,863 @@
+:root {
+  /* Purple */
+  --pur:#7f3ee4;
+  --purp:#bd5aff;
+  /* Yellow */
+  --yell:#f2350b;
+  --yello:#ed9e07;
+  /* Text */
+  --tex1:#727272;
+  --tex2:#c1c1c1;
+  /* Select */
+  --nosele:#3a3a3a;
+  --yessele:#ffffff;
+  /* gradient */
+  --bgsolid:#000000;
+  --bggradient:#1f052b;
+
+  /* Line */
+  --line:rgba(255,255,255,.18);
+  --hero-pt: 2rem;
+  --hero-pb: 2rem; /* <- corrige nombre (antes tenías --hero-bp) */
+}
+
+html, body {
+  overflow-x: hidden;
+}
+
+/* 1) Asegura fondo oscuro global (si no lo tienes) */
+html, body {
+  background:#0b0b10;
+}
+
+/* 2) Evita márgenes colapsados que “asoman” el fondo del body */
+h1, h2, h3, p, ul {
+  margin: 0;
+} /* quita márgenes por defecto */
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  max-width: 145rem;
+  margin-inline: auto;
+}
+
+body {
+  cursor: url("../assets/cursor/custom-cursor.png"), auto;
+}
+
+a, button {
+  cursor: url("../assets/cursor/click-cursor.png"), pointer;
+}
+
+/* ==== FUENTES ==== */
+@font-face {
+  font-family: "Minecraft";
+  src: url("../assets/fonts/Minecraft.otf") format("opentype");
+  font-weight: 600;
+  font-style:normal;
+  font-display:swap;
+}
+
+@font-face {
+  font-family: "SFMedium";
+  src: url("../assets/fonts/SFMedium.otf") format("opentype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SFRegular";
+  src: url("../assets/fonts/SFRegular.otf") format("opentype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ==== RESET BASE ==== */
+html {
+  box-sizing: border-box;
+  font-size: 62.5%; /* 1rem = 10px */
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.img-logo img {
+  display:inline-block;  /* <— clave: caja = ancho del texto */
+  width:auto;
+  margin: 0;
+}
+
+/* Animación suave para los spans del hero */
+.hero-title span {
+  display: inline-block;           /* necesario para transformar cada trozo */
+  opacity: 0;
+  transform: translateY(30px);
+  animation: heroFadeUp 2.5s ease forwards;
+}
+
+/* “Stagger”: retrasa cada span un poquito */
+.hero-title span:nth-child(1)  { animation-delay: .05s; }
+.hero-title span:nth-child(2)  { animation-delay: .15s; }
+.hero-title span:nth-child(3)  { animation-delay: .25s; }
+.hero-title span:nth-child(4)  { animation-delay: .35s; }
+.hero-title span:nth-child(5)  { animation-delay: .45s; }
+.hero-title span:nth-child(6)  { animation-delay: .55s; }
+.hero-title span:nth-child(7)  { animation-delay: .65s; }
+/* añade más nth-child si tienes más spans */
+
+@keyframes heroFadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+/* Respeto a usuarios con “reduced motion” */
+@media (prefers-reduced-motion: reduce) {
+  .hero-title span { animation: none; opacity: 1; transform: none; filter: none; }
+}
+
+
+/* ==== SECCIÓN HERO ==== */
+.hero {
+  width: 100%;
+  background: linear-gradient(to bottom, var(--bgsolid), var(--bggradient));
+}
+
+/* Grid 3 columnas: texto | línea | panel derecho */
+.hero-grid {
+  max-width: 145rem;
+  min-height: 73rem;
+  display:grid;
+  grid-template-columns:2fr .1rem 1fr;
+  align-items:start;
+  padding: 2rem;
+}
+
+/* Izquierda */
+.hero-logo {
+  display:block;
+  margin:0 0 1.4rem .6rem;
+  filter: drop-shadow(0 .2rem .8rem rgba(0,0,0,.45));
+}
+
+.hero-title {
+  font-family: "SFMedium", sans-serif;
+  letter-spacing:.1rem;
+  text-align: left;
+  padding-right: 2rem;
+  padding-top: 4rem;
+}
+
+.t-grad-violet {
+  background:linear-gradient(90deg, var(--pur), var(--purp));
+  font-size: 5.5rem;
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+
+.t-grad-orange {
+  background:linear-gradient(90deg, var(--yell), var(--yello));
+  font-size: 6.5rem;
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+
+.t-muted {
+  font-size: 5.5rem;
+  color:var(--tex1);
+}
+
+.t-muted2 {
+  font-size: 5.5rem;
+  color:var(--tex2);
+}
+
+/* Línea vertical que toca bordes */
+.hero-vline {
+  width:.1rem;
+  background:var(--line);
+  align-self:stretch;
+  margin-top:calc(-1 * var(--hero-pt));
+  margin-bottom:calc(-1 * var(--hero-pb) - .1rem);
+  pointer-events:none;   /* <— importantísimo */
+}
+
+/* Derecha */
+.hero-right {
+  min-height:67rem;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  align-items:flex-end;   /* About Me a la derecha */
+  gap:2rem;
+  min-width:0;           /* evita desbordes rara vez */
+}
+
+.hero-about {
+  display:inline-block;  /* <— clave: caja = ancho del texto */
+  width:auto;
+  margin:0;
+  font-family:"SFMedium", sans-serif;
+  font-size:3rem;
+  color:var(--tex1);
+  text-align:right;      /* opcional */
+}
+
+.hero-about:hover {
+  background:linear-gradient(90deg, var(--yell), var(--yello));
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+  transform: scale(1.1);
+  transition: transform .15s ease;
+  filter: brightness(1.5);
+}
+
+.hero-work {
+  display:inline-block;
+  align-self:center;     /* <— lo centra horizontalmente en la columna derecha */
+  font-family:"Minecraft",sans-serif;
+  font-size:7rem;
+  margin:0 auto; 
+  letter-spacing:.2rem;
+  color: var(--tex1);
+  text-align:center;
+}
+
+.hero-work:hover {
+  background:linear-gradient(90deg,var(--yell),var(--yello));
+  -webkit-background-clip:text; 
+  background-clip:text; 
+  color:transparent;
+  transform: scale(1.1);
+  transition: transform .15s ease;
+  filter: brightness(1.5);
+}
+
+/* Línea horizontal inferior del hero */
+.divider-x {
+  height: 0; /* <- importante */
+  border-top: 1px solid rgba(255,255,255,.12);
+  margin: 0;   
+}
+
+/* Responsive */
+@media (max-width:768px) {
+  .hero-grid { grid-template-columns:1fr; }
+  .hero-vline { display:none; }
+  .hero-right { align-items:center; gap:1.8rem; margin-top:1rem; min-height: 5rem; }
+}
+
+/* ===== FRANJA DE CATEGORÍAS ===== */
+.cat-strip {
+  background: linear-gradient(to bottom, var(--bgsolid), var(--bggradient));
+  padding: 2rem 2rem;
+  padding-bottom: 5rem;
+  padding-top: 5rem;
+}
+
+/* Fila con 5 columnas flexibles y separación pareja */
+.cat-row {
+  display: flex;
+  gap: 1.8rem;
+  justify-content: space-between;
+  max-width: 145rem;
+  margin: 0 auto;
+}
+
+.cat {
+  display: flex;
+  flex-direction: column;
+  gap: .8rem;
+  flex: 1 1 0;        /* todas crecen por igual */
+  min-width: 0;       /* evita desbordes de contenido */
+  font-family: "Minecraft", sans-serif;
+  letter-spacing: .1rem;
+}
+
+.cat__label {
+  color: var(--nosele);
+  font-size: 2rem;
+  text-align: center;
+  letter-spacing: .1rem;
+}
+
+/* Hover: oscurece imagen + borde blanco + título blanco */
+.cat__thumb {
+  height: 60rem;  /* ajusta a gusto */
+  position: relative;
+  width: 100%;
+  /* fija proporción sin depender del tamaño real de la imagen */
+  aspect-ratio: 3 / 5;     /* alto vertical tipo poster (ajústalo si quieres) */
+  border-radius: .6rem;
+  overflow: hidden;
+  line-height: 0;
+  background: #0f1629;
+}
+
+.cat__thumb img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;   /* recorta sin deformar */
+  display: block;
+  transition: filter .3s ease;
+}
+
+/* Marco blanco fino por encima (invisible por defecto) */
+.cat__thumb::after {
+  content: "";
+  position: absolute;
+  inset: .1rem;                      /* margen interior del marco */
+  border: .1rem solid var(--tex2);
+  border-radius: inherit;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s ease;
+}
+
+/* Hover / activo */
+.cat:hover .cat__thumb img { filter: brightness(.5); }
+.cat:hover .cat__thumb::after { opacity: 1; }
+.cat:hover .cat__label { color: var(--yessele); }
+
+.cat:hover {
+  transform: translateY(-3px);
+  transition: transform .5s ease;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 1126px) {
+  .cat-row { flex-wrap: wrap; }
+  .cat { flex: 1 1 calc(50% - 1.8rem); }  /* 2 por fila en tablets */
+}
+
+@media (max-width: 560px) {
+  .cat { flex: 1 1 100%; }  /* 1 por fila en móvil */
+}
+
+/* ===== CTA ===== */
+.cta {
+  background:#06050a;
+  border-top:.1rem solid var(--line);
+}
+
+.cta__inner {
+  max-width:145rem;
+  margin:0 auto;
+  padding:8rem 2.4rem;
+}
+
+.cta__title {
+  margin:0;
+  font-family:"SFMedium",sans-serif;
+  font-size:6rem;
+  letter-spacing:.05rem;
+  text-align:center;
+}
+
+.cta-grad_violeta {
+  background:linear-gradient(90deg, var(--pur), var(--purp));
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+
+.cta-grad_orange {
+  background:linear-gradient(90deg, var(--yell), var(--yello));
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+
+.cta-grad_violeta2 {
+  color: var(--purp);
+}
+
+/* ===== FOOTER ===== */
+.site-footer {
+  background: linear-gradient(to bottom, var(--bgsolid), var(--bggradient));
+}
+
+.footer-grid {
+  max-width:145rem;
+  margin:0 auto;
+  padding:6rem 2.4rem;
+  display:grid;
+  grid-template-columns: 1fr .1rem 1fr;
+}
+
+.footer-vline {
+  width:.1rem;
+  background:var(--line);
+  align-self:stretch;
+  margin-top:calc(-1 * 6rem);
+  margin-bottom:calc(-1 * 6rem - .1rem);
+}
+
+.footer-heading {
+  margin:0 0 4rem;
+  text-align: center;
+  font-family:"SFMedium",sans-serif;
+  font-size:3.2rem;
+  letter-spacing:.08rem;
+  background:linear-gradient(180deg, var(--tex1), var(--tex2));
+  /*background: var(--purp);*/
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+
+/* Social icons */
+.socials {
+  display:flex;          
+  justify-content:center;
+  align-items:center;
+  gap:3.2rem;  /* espacio entre íconos */
+}
+
+.social {
+  width:3.6rem;
+  height:3.6rem;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  transition: transform .15s ease;
+}
+
+.social img {
+  width: 3.6rem;
+  height: 3.6rem;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: inline-block;
+  transition: transform .15s ease;
+}
+
+.social.x { background-image: url("../assets/icons/twitter-alt.svg"); }
+.social.ig { background-image: url("../assets/icons/instagram.svg"); }
+.social.dc { background-image: url("../assets/icons/discord.svg"); }
+
+.social:hover img {
+  transform: scale(1.3);
+  filter: brightness(1.5);
+}
+
+.footer-right {
+  display: flex;
+  flex-direction: column;   /* Apila CONTACT arriba y el correo abajo */
+  align-items: center;      /* Centra horizontalmente TODO lo que esté adentro */
+  text-align: center;       /* Asegura que el texto dentro también se centre */
+}
+
+.footer-mail {
+  display: block;           /* o inline-block, da igual en este caso */
+  width: fit-content;       /* el ancho se ajusta al texto, no a toda la fila */
+  background: linear-gradient(90deg, var(--yell), var(--yello));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-family: "SFMedium", sans-serif;
+  font-size: 2.6rem;
+  text-decoration: none;
+}
+.footer-mail:hover {
+  filter: brightness(1.5);
+  transform: scale(1.1);
+  transition: transform .15s ease;
+}
+
+/* Copyright bar */
+.footer-bottom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top:.1rem solid var(--line);
+  background-color: var(--bgsolid);
+  padding:1rem 1.5rem;
+  font-family:"SFRegular",sans-serif;
+  font-size:0.5rem;
+}
+
+.footer-bottom p {
+  max-width: 145rem;
+  margin:0 auto;
+  font-size: 1.5rem;
+  color: var(--tex1);
+}
+
+/* ===== Responsive ===== */
+@media (max-width:1024px) {
+  .footer-grid { grid-template-columns:1fr; }
+  .footer-vline { display:none; }
+  .footer-left { padding-bottom: 9rem; }
+  .footer-heading { margin-bottom:2rem; }
+  .footer-mail { font-size:2.2rem; }
+}
+
+@media (max-width:768px) {
+  .cta__title { font-size:4.4rem; }
+  .socials { gap:2.2rem; }
+}
+
+/* ---------------------------------------------- ABOUT ME ---------------------------------------------- */
+.main-abo, .hero-abo { 
+  background-color: var(--bgsolid);
+}
+
+.hero-abo_grid1 { 
+  background-color: var(--bgsolid);
+  padding:2rem; 
+  display:grid; 
+  grid-template-columns: 1fr 1fr;
+}
+
+.hero-abo_type {
+  font-family:"SFMedium", sans-serif;
+  justify-self: end;
+}
+
+.hero-abo_es { /* <— clave: caja = ancho del texto */
+  display: inline-block;  /* o: inline-flex */
+  width: fit-content; 
+  font-size:3rem;
+  margin-top: 0;
+  text-align: right;
+  background:linear-gradient(90deg,var(--yell),var(--yello));
+  -webkit-background-clip:text; 
+  background-clip:text; 
+  color:transparent;
+}
+
+/* description */
+.main-abo_grid {
+  display:grid; 
+  grid-template-columns:3fr 1fr;
+  padding: 0 6rem 0 8rem;
+  max-width: 145rem;
+  margin-inline: auto;  /* centra horizontalmente */
+  font-family:"SFMedium", sans-serif;
+  color: var(--yessele);
+}
+
+.main-abo_indi {
+  padding: 5rem;
+  font-size: 3.2rem;
+  letter-spacing:.1rem;
+}
+
+.main-abo_indi2 {
+  padding: 5rem;
+  font-size: 2.5rem;
+}
+
+.main-abo_indiColor { color: var(--tex1); }
+.main-abo_indiColor2 { color: var(--yessele); }
+
+.main-abo_indiColor3 {
+  background:linear-gradient(90deg, var(--yell), var(--yello));
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+
+/* <= 992px: stack del hero si hace falta y grid 1col + 1col más equilibrado */
+@media (max-width: 1087px) {
+  .main-abo_grid {
+    grid-template-columns: 1fr;
+    padding: 0 2.5rem;
+  }
+  .main-abo_indi2 {
+    padding-top: 1rem;
+  }
+}
+
+/* <= 480px: título centrado, espacios compactos */
+@media (max-width: 480px) {
+  .hero-abo_es {
+    text-align: center;
+    font-size: clamp(1.6rem, 6vw, 2.2rem);
+  }
+  .main-abo_grid { padding: 0; }
+  .main-abo_indi,
+  .main-abo_indi2 {
+    font-size: 3rem;
+    padding: 2rem 1rem;
+  }
+}
+
+/*-------------------- Marketing ----------------*/
+
+/* ===== Tabs de navegación en header ===== */
+.hero-abo_es2 {
+  display:inline-block;  /* <— clave: caja = ancho del texto */
+  width:auto;
+  margin:0;
+  font-family:"SFMedium", sans-serif;
+  font-size:3rem;
+  color:var(--tex1);
+  text-align:right;  
+}
+.hero-abo_es2:hover {
+  background:linear-gradient(90deg,var(--yell),var(--yello));
+  -webkit-background-clip:text; 
+  background-clip:text; 
+  color:transparent;
+  transform: scale(1.1);
+  transition: transform .15s ease;
+}
+.site-nav {
+  display: flex;
+  gap: 1.8rem;
+  justify-content: space-around;
+  padding: 2rem;
+}
+.site-nav__link {
+  display: inline-block;           /* necesario para transformar cada trozo */
+  opacity: 0;
+  transform: translateY(8px);
+  animation: heroFadeUp 2s ease forwards;
+  font-family: "Minecraft", sans-serif;
+  letter-spacing: .1rem;
+  font-size: 2rem;
+}
+
+.is-active {
+  background:linear-gradient(90deg, var(--yell), var(--yello));
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+.no-active {
+  color:var(--tex1)
+}
+.no-active:hover {
+  background:linear-gradient(90deg, var(--yell), var(--yello));
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+
+/* ===== Gallery Masonry ===== */
+.gallery{ 
+  padding: 2rem 1.25rem 3rem; 
+  background: linear-gradient(to bottom, var(--bgsolid), var(--bggradient));
+  width: 100%;;
+}
+
+.masonry{
+  font-family: "Minecraft", sans-serif;
+  letter-spacing: .1rem;
+  column-count: 3;
+  column-gap: 1.5rem;
+  padding-top:2rem;
+}
+
+/* Cada tile es un <a> con background-image (no <img>) para dificultar guardar */
+.tile{
+  display:block;
+  width:100%;
+  margin:0 0 1.5rem;
+  position:relative;
+  overflow:hidden;
+  background-size:cover;
+  background-position:center;
+  border-radius:14px;
+  transition:transform .5s ease;
+  -webkit-user-drag:none;
+  user-select:none;
+
+  /* EVITA cortes/particiones en columnas (clave en iPad) */
+  break-inside: avoid;
+  -webkit-column-break-inside: avoid;
+  -moz-column-break-inside: avoid;
+}
+
+/* Alturas/formatos para “desorden” controlado */
+.t-21x9   { aspect-ratio: 21 / 9; }
+.t-16x9   { aspect-ratio: 16 / 9; }
+.t-9x16   { aspect-ratio: 9 / 16; }
+.t-3x4    { aspect-ratio:  3 / 4; }
+.t-1x1    { aspect-ratio:  1 / 1; }
+
+.tile::before{
+  content:"";
+  position:absolute;
+  inset: 0; /* elimina el margen de 5px */
+  border-radius: 14px;   /* respeta el redondeo */
+  background:rgba(0,0,0,0);          /* estado normal transparente */
+  transition:background .3s ease, box-shadow .3s ease;
+  pointer-events:none;    
+}
+
+/* Hover: oscurecer y borde blanco fino */
+.tile:hover{
+  transform:translateY(-2px);
+}
+.tile:hover::before{
+  background:rgba(0,0,0,0.45);       /* “sombra” interna */
+  box-shadow:inset 0 0 0 1.5px #fff; /* marco blanco fino */
+  pointer-events:none
+}
+
+/* Posición del texto */
+.tile .caption{
+  position:absolute; left:0; right:0; top:0;
+  padding: 1rem 1rem;
+  font-size: 1.5rem;
+  color:#fff;
+  transform: translateY(-100%);
+  transition: transform .5s ease;
+}
+
+/* Saca el texto hacia arriba */
+.tile:hover .caption,
+.tile:focus-visible .caption{ transform: translateY(0); }
+
+/* Pequeño borde interno en reposo para que se vea nítido en fondos muy oscuros */
+.tile::after{
+  content:"";
+  position:absolute; inset:0;
+  border-radius:14px;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.04);
+  pointer-events:none;
+}
+
+/* Deshabilita selección/arrastre global dentro de la galería */
+.no-save, .gallery, .masonry, .tile{
+  -webkit-user-select: none; user-select: none;
+}
+
+@media (max-width: 1100px){ .masonry{ column-count: 2; } }
+@media (max-width: 768px){ .site-nav { flex-direction: column } .site-nav__link { text-align: center; } }
+@media (max-width: 480px){ .masonry{ column-count: 1; } }
+
+/* -------------------------------------LIGHTBOX ----------------------------------------- */
+
+/* ===== LIGHTBOX ===== */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  display: flex; /* siempre montado; controlamos visibilidad */
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 99999;
+
+  /* Sin lupa, usa tu cursor personalizado */
+  cursor: inherit;
+
+  /* Estado oculto */
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+/* Lightbox activo */
+.lightbox.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* Imagen ampliada */
+.lightbox-img {
+  max-width: 90vw;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 10px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.7);
+  cursor: inherit; /* mantiene tu cursor */
+}
+
+@keyframes lb-zoom-in {
+  from {
+    transform: scale(0.98);
+    opacity: 0.6;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Botón cerrar */
+.lb-close {
+  position: absolute;
+  top: 16px;
+  right: 24px;
+  font-size: 32px;
+  line-height: 1;
+  background: transparent;
+  color: #fff;
+  border: 0;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Flechas (ocultas, pero funcionales con teclado) */
+.lb-prev,
+.lb-next {
+  display: none !important;
+}
+
+/* Evita interferencia de overlays */
+.tile::before,
+.overlay {
+  pointer-events: none;
+}
+
+/* Bloquea scroll al abrir el lightbox */
+body.no-scroll {
+  overflow: hidden;
+  height: 100vh;
+  touch-action: none;
+}
+
+/* Accesibilidad: reducir movimiento */
+@media (prefers-reduced-motion: reduce) {
+  .lightbox,
+  .lightbox * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Móviles */
+@media (max-width: 768px) {
+  .lightbox-img {
+    max-width: 95vw;
+    max-height: 85vh;
+  }
+
+  .lb-close {
+    font-size: 2rem;
+    right: 16px;
+  }
+}
+
+.lightbox-video {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 10px;
+  box-shadow: 0 0 30px rgba(0,0,0,0.8);
+  object-fit: contain;
+}
