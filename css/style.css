@@ -40,7 +40,7 @@ body::-webkit-scrollbar {
 }
 
 body {
-  max-width: 145rem;
+  max-width: auto;
   margin-inline: auto;
 }
 
@@ -138,7 +138,7 @@ a {
 
 /* Grid 3 columnas: texto | línea | panel derecho */
 .hero-grid {
-  max-width: 145rem;
+  max-width: auto;
   min-height: 73rem;
   display:grid;
   grid-template-columns:2fr .1rem 1fr;
